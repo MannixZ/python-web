@@ -1,0 +1,33 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+    <h1>基于表单上传文件</h1>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <input type="text" name="username">
+        <input type="file" name="avatar">
+        <input type="submit" value="提交">
+    </form>
+
+    <hr>
+
+    <h1>基于form上传文件</h1>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">{{ title }}</h3>
+        </div>
+        <div class="panel-body">
+            <form method="post" enctype="multipart/form-data" novalidate>
+                {% csrf_token %}
+                {% for field in form %}
+                    <div class="form-group">
+                        <label>{{ field.label }}</label>
+                        {{ field }}
+                        <span style="color: red"> {{ field.errors.0 }}</span>
+                    </div>
+                {% endfor %}
+                <input type="submit" class="btn btn-success" value="提交">
+            </form>
+        </div>
+    </div>
+{% endblock %}

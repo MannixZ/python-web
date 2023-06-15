@@ -1,0 +1,188 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+    <div style="margin-bottom: 10px">
+        <a href="/add/admin/" class="btn btn-success">新建任务</a>
+        <div style="float: right;width: 300px">
+            <form method="get">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Search for..." name="q" value="{{ value }}">
+                    <span class="input-group-btn">
+                <button class="btn btn-default" type="submit">Go!</button>
+                </span>
+                </div><!-- /input-group -->
+            </form>
+        </div>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading">Panel heading without title</div>
+        <div class="panel-body">
+            <form id="task" novalidate>
+                <div class="clearfix">
+                    {% for field in form %}
+                        <div class="col-xs-6">
+                            <div class="form-group" style="position: relative;margin-bottom: 20px">
+                                <label>{{ field.label }}</label>
+                                {{ field }}
+                                <span class="error-msg" style="color: red;position: absolute;"></span>
+                            </div>
+                        </div>
+                    {% endfor %}
+                    <div class="col-xs-12">
+                        <button id="add_task" type="button" class="btn btn-success">添加</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="panel panel-default">
+        <!-- Default panel contents -->
+        <div class="panel-heading">任务列表</div>
+
+        <!-- Table -->
+        <table class="table table-bordered">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>级别</th>
+                <th>标题</th>
+                <th>任务详情</th>
+                <th>负责人</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for obj in queryset %}
+                <tr>
+                    <th scope="row">{{ obj.id }}</th>
+                    <td>{{ obj.level }}</td>
+                    <td>{{ obj.title }}</td>
+                    <td>{{ obj.detail }}</td>
+                    <td>{{ obj.user.name }}</td>
+                    <td>
+                        <a class="btn btn-primary btn-xs" href="/edit/{{ obj.id }}/admin/">
+                            编辑
+                        </a>
+                        <a class="btn btn-danger btn-xs"
+                           onclick="location.href='/delete/{{ obj.id }}/admin/'">
+                            删除
+                        </a>
+                        <a class="btn btn-default btn-xs"
+                           onclick="location.href='/reset/{{ obj.id }}/admin/'">
+                            重置密码
+                        </a>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <nav aria-label="...">
+        <ul class="pagination">
+            {{ page_string }}
+        </ul>
+    </nav>
+
+    <hr>
+    <h3>示例一</h3>
+    <input type="button" value="点击1" class="btn btn-primary" id="btn1">
+
+    <h3>示例二</h3>
+    <input type="text" id="txtAge" placeholder="年龄">
+    <input type="button" value="点击2" class="btn btn-primary" id="btn2">
+
+    <h3>示例三</h3>
+    <form id="form3">
+        <input type="text" name="age" placeholder="年龄">
+        <input type="text" name="height" placeholder="身高">
+        <input type="text" name="weight" placeholder="体重">
+    </form>
+    <input type="button" value="点击3" class="btn btn-primary" id="btn3">
+
+{% endblock %}
+{% block js %}
+    <script type="text/javascript">
+        $(function () {
+            // 页面框架加载完成之后代码自动执行
+            bindBtn1Event();
+            bindBtn2Event();
+            bindBtn3Event();
+            bindTaskEvent();
+        })
+
+        function bindBtn1Event() {
+            $("#btn1").click(function () {
+                $.ajax({
+                    url: '/task/ajax/',
+                    type: 'post',
+                    data: {
+                        n1: 123,
+                        n2: 456
+                    },
+                    dataType: "JSON",
+                    success: function (res) {
+                        alert("请求成功" + res.msg);
+                    }
+                })
+            })
+        }
+
+        function bindBtn2Event() {
+            $("#btn2").click(function () {
+                $.ajax({
+                    url: '/task/ajax/',
+                    type: 'post',
+                    data: {
+                        n1: $("#txtAge").val(),
+                        n2: 456
+                    },
+                    dataType: "JSON",
+                    success: function (res) {
+                        alert("请求成功" + res.msg);
+                    }
+                })
+            })
+        }
+
+        function bindBtn3Event() {
+            $("#btn3").click(function () {
+                $.ajax({
+                    url: '/task/ajax/',
+                    type: 'post',
+                    data: $("#form3").serialize(),
+                    dataType: "JSON",
+                    success: function (res) {
+                        alert("请求成功" + res.msg);
+                    }
+                })
+            })
+        }
+
+        function bindTaskEvent() {
+
+            $("#add_task").click(function () {
+                {#点击按钮后先清空旧错误信息栏内容#}
+                $(".error-msg").empty();
+
+                $.ajax({
+                    url: '/add/task/',
+                    type: 'post',
+                    data: $("#task").serialize(),
+                    dataType: "JSON",
+                    success: function (res) {
+                        if (res.status) {
+                            alert("添加成功");
+                            // JS页面页面刷新
+                            location.reload();
+                        } else {
+                            $.each(res.error, function (name, data) {
+                                $("#id_" + name).next().text(data[0])
+                            })
+                        }
+                    }
+                })
+            })
+        }
+    </script>
+{% endblock %}
