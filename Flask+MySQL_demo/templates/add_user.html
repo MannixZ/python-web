@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../static/plugins/bootstrap-3.4.1/css/bootstrap.css">
+    <style>
+        .form-group {
+            width: 50%;
+        }
+    </style>
+</head>
+<body>
+
+<form method="post" action="/add/user">
+    <div class="form-group">
+        <label for="username">user</label>
+        <input type="username" class="form-control" id="username" name="username" placeholder="用户名">
+    </div>
+    <div class="form-group">
+        <label for="pwd">pwd</label>
+        <input type="password" class="form-control" id="pwd" name="pwd" placeholder="密码">
+    </div>
+    <div class="form-group">
+        <label for="mobile">mobile</label>
+        <input type="mobile" class="form-control" id="mobile" name="mobile" placeholder="手机号">
+    </div>
+    <button type="submit" class="btn btn-primary">提交</button>
+</form>
+
+<form method="post" action="/delete/user">
+    <div class="form-group">
+        <label for="username">user</label>
+        <input type="username" class="form-control" name="id" placeholder="用户名">
+    </div>
+    <button type="submit" class="btn btn-danger">删除</button>
+</form>
+
+<form method="get" action="/get/user">
+    <table class="table">
+        <caption>Optional table caption.
+            <button type="submit" class="btn btn-primary">查询</button>
+        </caption>
+        <thead>
+        <tr>
+            <th>id</th>
+            <th>username</th>
+            <th>password</th>
+            <th>mobile</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for item in data_list %}
+        <tr>
+            <th scope="row">{{item.id}}</th>
+            <td>{{item.username}}</td>
+            <td>{{item.pwd}}</td>
+            <td>{{item.mobile}}</td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</form>
+
+
+<script src="../static/js/jquery-3.6.4.js"></script>
+<script src="../static/plugins/bootstrap-3.4.1/js/bootstrap.js"></script>
+</body>
+</html>

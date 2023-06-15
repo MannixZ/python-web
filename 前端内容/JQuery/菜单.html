@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .menus{
+            width: 200px;
+            height: 800px;
+            border: 1px solid red;
+        }
+        .menus .header{
+            background-color: gold;
+            padding: 10px 5px;
+            border-bottom: 1px dotted #dddddd;
+            cursor: pointer;
+        }
+        .menus .content a{
+            display: block;
+            padding: 5px 5px;
+            border-bottom: 1px dotted #dddddd;
+        }
+        .hide{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="menus">
+        <div class="item">
+            <div class="header" onclick="clickMe(this)">上海</div>
+            <div class="content hide">
+                <a>宝山区</a>
+                <a>青浦区</a>
+            </div>
+        </div>
+
+        <div class="item">
+            <div class="header" onclick="clickMe(this)">北京</div>
+            <div class="content hide">
+                <a>海淀</a>
+                <a>朝阳</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="static/jquery-3.6.4.js"></script>
+    <script>
+        function clickMe(self) {
+            // $(self) -> 表示当前点击的那个标签
+            // $(self).next() -> 表示当前点击的下一个标签
+            // $(self).next().removeClass("hide") -> 删除样式
+            // var hasHide = $(self).next().hasClass("hide")
+            // if (hasHide){
+            //     $(self).next().removeClass("hide")
+            // }
+            // else {
+            //     $(self).next().addClass("hide")
+
+            // 让自己下面的功能展示出来
+            $(self).next().removeClass("hide")
+
+            // 找父亲，父亲的所有兄弟，再去每个兄弟的子孙中寻找 class=content，添加 hide 样式
+            $(self).parent().siblings().find(".content").addClass("hide")
+
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<table border="1">
+    <thred>
+        <tr>
+            <th>ID</th>
+            <th>姓名</th>
+            <th>年龄</th>
+        </tr>
+    </thred>
+
+    <tbody id="body">
+<!--          <tr>-->
+<!--              <td></td>-->
+<!--          </tr>-->
+    </tbody>
+
+    <script type="text/javascript">
+        var dataList = [
+            {id:1, name:"郭志", age:19},
+            {id:1, name:"郭志", age:19},
+            {id:1, name:"郭志", age:19},
+            {id:1, name:"郭志", age:19},
+            {id:1, name:"郭志", age:19},
+        ]
+
+        for (var idx in dataList){
+            var info = dataList[idx]
+
+            var tr = document.createElement("tr")
+
+            for (var key in info){
+                var text = info[key]
+                var td = document.createElement("td")
+                td.innerText = text
+                tr.appendChild(td);
+            }
+            var bodyTag = document.getElementById("body")
+            bodyTag.appendChild(tr)
+        }
+    </script>
+
+</table>
+
+</body>
+</html>

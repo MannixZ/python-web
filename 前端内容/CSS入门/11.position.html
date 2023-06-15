@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body{
+            margin: 0;
+        }
+        .container{
+            width: 1226px;
+            margin: 0 auto;
+        }
+        .left{
+            float: left;
+        }
+        .header{
+            background-color: #333;
+        }
+        .header .menu{
+            float: left;
+            color: white;
+        }
+        .header .account{
+            float: right;
+            color: white;
+        }
+        .header a {
+            color: #b0b0b0;
+            line-height: 40px;
+            display: inline-block;
+            font-size: 12px;
+            /*margin-right: 10px;*/
+            padding: 0 10px;
+            text-decoration: none;
+        }
+        .header a:hover{
+            color: white;
+        }
+        .sub-header .ht{
+            height: 100px;
+        }
+        .sub-header .logo{
+            float: left;
+            width: 234px;
+            line-height: 100px;
+        }
+        .sub-header .logo a{
+            display: inline-block;
+            margin-top: 22px;
+        }
+        .sub-header .logo a img{
+            height: 56px;
+            width: 56px;
+        }
+        .menu-list{
+            float: left;
+            line-height: 100px;
+        }
+        .menu-list a{
+            padding: 0 10px;
+            display: inline-block;
+            color: #333;
+            font-size: 16px;
+            text-decoration: none;
+        }
+        .menu-list a:hover{
+            color: #ff6700;
+        }
+        .search{
+            float: right;
+        }
+        .slider .sd-img{
+            width: 1226px;
+            height: 460px;
+        }
+        img{
+            width: 100%;
+            height: 100%;
+        }
+        .news {
+            margin-top: 14px;
+        }
+        .news .channel{
+            width: 228px;
+            height: 162px;
+            padding: 3px;
+            background-color: #5f5750;
+        }
+        .news .channel .item{
+            height: 82px;
+            width: 76px;
+            float: left;
+            text-align: center;
+        }
+        .news .list-item{
+            width: 316px;
+            height: 170px;
+            margin-left: 14px;
+        }
+        .news .item img{
+            width: 24px;
+            height: 24px;
+            display: block;
+            margin: 0 auto 4px;
+        }
+        .news .item a{
+            display: inline-block;
+            text-decoration: none;
+            padding-top: 18px;
+            font-size: 12px;
+            color: #fff;
+            opacity: .7;
+        }
+        .news .item a:hover{
+            opacity: 1;
+        }
+        .back{
+            position: fixed;
+            width: 60px;
+            height: 60px;
+            border: 1px solid red;
+
+            right: 0px;
+            bottom: 0px;
+        }
+        .dialog{
+            position: fixed;
+            height: 300px;
+            width: 500px;
+            background-color: green;
+
+            left: 0;
+            right: 0;
+            margin: 0 auto;
+
+            top: 200px;
+            z-index: 1000;
+        }
+        .mask {
+            position: fixed;
+            opacity: 0.7;
+            background-color: black;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            z-index: 999;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="container">
+            <div class="menu">
+                <a href="https://www.mi.com">小米商城</a>
+                <a>MIUI</a>
+                <a>云服务</a>
+                <a>有品</a>
+                <a>开放平台</a>
+            </div>
+            <div class="account">
+                <a>登录</a>
+                <a>注册</a>
+                <a>消息通知</a>
+            </div>
+            <div style="clear: both"></div>
+        </div>
+    </div>
+    <div class="sub-header">
+        <div class="container">
+            <div class="ht logo">
+                <a>
+                    <img src="static/mi.png">
+                </a>
+            </div>
+            <div class="ht menu-list">
+                <a href="https://www.mi.com">小米手机</a>
+                <a>红米手机</a>
+                <a>电视</a>
+                <a>笔记本</a>
+                <a>平板</a>
+                <a>家电</a>
+                <a>路由器</a>
+                <a>服务</a>
+                <a>社区</a>
+            </div>
+
+            <div class="ht search"></div>
+            <div style="clear: both"></div>
+        </div>
+    </div>
+    <div class="slider">
+        <div class="container">
+            <div class="sd-img">
+                <img src="static/b1.jpeg" alt="">
+            </div>
+        </div>
+    </div>
+    <div class="news">
+        <div class="container">
+            <div class="channel left">
+                <div class="item">
+                    <a>
+                        <img src="static/a1.png" alt="">
+                        保障服务
+                    </a>
+                </div>
+                <div class="item">
+                    <a>
+                        <img src="static/a1.png" alt="">
+                        保障服务
+                    </a>
+                </div>
+                <div class="item">
+                    <a>
+                        <img src="static/a1.png" alt="">
+                        保障服务
+                    </a>
+                </div>
+                <div class="item">
+                    <a>
+                        <img src="static/a1.png" alt="">
+                        保障服务
+                    </a>
+                </div>
+                <div class="item">
+                    <a>
+                        <img src="static/a1.png" alt="">
+                        保障服务
+                    </a>
+                </div>
+                <div class="item">
+                    <a>
+                        <img src="static/a1.png" alt="">
+                        保障服务
+                    </a>
+                </div>
+            </div>
+            <div class="list-item left">
+                <img src="static/s1.jpg" alt="">
+            </div>
+            <div class="list-item left">
+                <img src="static/s2.jpg" alt="">
+            </div>
+            <div class="list-item left">
+                <img src="static/s3.jpg" alt="">
+            </div>
+            <div style="clear:both"></div>
+        </div>
+    </div>
+<!--    返回顶部-->
+    <div class="back"></div>
+<!--    固定中间对话框-->
+<!--    <div class="dialog"></div>-->
+<!--    <div class="mask"></div>-->
+
+</body>
+</html>
+</body>
+</html>

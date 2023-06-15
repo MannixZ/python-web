@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<table border="1">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>姓名</th>
+        <th>操作</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>哈哈</td>
+        <td>嘻嘻</td>
+        <td>
+            <input type="button" value="删除" class="delete"/>
+        </td>
+    </tr>
+    </tbody>
+    <tbody>
+    <tr>
+        <td>哈哈</td>
+        <td>嘻嘻</td>
+        <td>
+            <input type="button" value="删除" class="delete"/>
+        </td>
+    </tr>
+    </tbody>
+    <tbody>
+    <tr>
+        <td>哈哈</td>
+        <td>嘻嘻</td>
+        <td>
+            <input type="button" value="删除" class="delete"/>
+        </td>
+    </tr>
+    </tbody>
+
+    <script src="static/jquery-3.6.4.js"></script>
+    <script>
+        $(function () {
+            $(".delete").click(function () {
+                $(this).parent().parent().remove()
+            })
+        })
+    </script>
+</table>
+</body>
+</html>
